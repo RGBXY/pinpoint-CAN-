@@ -9,11 +9,11 @@
       odio pharetra dictum.
     </p>
     <div class="flex justify-between mt-10">
-      <div>
+      <div class="w-[48%]">
         <h1 class="font-semibold text-lg mb-4">Information Title 2</h1>
         <p>Interdum tempus in duis neque sit lacus sagittis. Nunc sed proin magna tempor. Viverra mauris sit malesuada diam rutrum tellus nibh. Facilisi habitasse massa justo mattis sed cras scelerisque arcu.</p>
       </div>
-      <div>
+      <div class="w-[48%]">
         <h1 class="font-semibold text-lg mb-4">Information Title 3</h1>
         <p>Interdum tempus in duis neque sit lacus sagittis. Nunc sed proin magna tempor. Viverra mauris sit malesuada diam rutrum tellus nibh. Facilisi habitasse massa justo mattis sed cras scelerisque arcu.</p>
       </div>

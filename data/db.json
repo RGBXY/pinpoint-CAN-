@@ -1,0 +1,28 @@
+{
+  "related_product": [
+    {
+      "id": "1",
+      "img": "../../img/related_1",
+      "gender": "../../img/related_1",
+      "title": "Product 1",
+      "price": "Product 1",
+      "review": "⭐⭐⭐⭐⭐ (4.5) 16 Reviews"
+    },
+    {
+      "id": "2",
+      "img": "../../img/related_2",
+      "gender": "../../img/related_2",
+      "title": "Product 2",
+      "price": "Product 2",
+      "review": "⭐⭐⭐⭐⭐ (4.5) 16 Reviews"
+    },
+    {
+      "id": "3",
+      "img": "../../img/related_3",
+      "gender": "../../img/related_3",
+      "title": "Product 3",
+      "price": "Product 3",
+      "review": "⭐⭐⭐⭐⭐ (4.5) 16 Reviews"
+    }
+  ]
+}

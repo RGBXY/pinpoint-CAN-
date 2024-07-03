@@ -11,8 +11,8 @@
         <p>{{ count }}</p>
         <button @click="tambah" class="py-3 pr-3">+</button>
       </div>
-      <button class="py-4 px-6 border-slate-300 bg-[#6366F1] text-white text-sm">TAMBAH KE KERANJANG</button>
-      <button class="inline-flex py-3.5 px-3.5 gap-5 border-2 border-slate-300 font-semibold">
+      <button @click="addToCart" class="py-4 px-6 border-slate-300 bg-[#6366F1] text-white text-sm">TAMBAH KE KERANJANG</button>
+      <button @click="addToWishlist" class="inline-flex py-3.5 px-3.5 gap-5 border-2 border-slate-300 font-semibold">
         <img src="../../public/img/wishlist.svg" alt="" />
       </button>
       <button class="inline-flex py-3.5 px-4 gap-5 border-2 border-slate-300 font-semibold">
@@ -30,15 +30,15 @@
 <script>
 import { ref } from "vue";
 
-const count = ref(0);
-
-function tambah() {
-  count.value++;
-}
-
 export default {
-  setup() {
-    const count = ref(0);
+  props: {
+    initialCount: {
+      type: Number,
+      default: 0,
+    },
+  },
+  setup(props, { emit }) {
+    const count = ref(props.initialCount);
 
     const tambah = () => {
       count.value++;
@@ -50,10 +50,21 @@ export default {
       }
     };
 
+    const addToCart = () => {
+      emit("add-to-cart", count.value);
+      count.value = 0; // Reset count setelah menambah ke keranjang
+    };
+
+    const addToWishlist = () => {
+      emit("add-to-wishlist");
+    };
+
     return {
       count,
       tambah,
       kurang,
+      addToCart,
+      addToWishlist,
     };
   },
 };

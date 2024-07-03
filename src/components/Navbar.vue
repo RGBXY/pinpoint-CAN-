@@ -1,5 +1,4 @@
-<script setup></script>
-
+<!-- Navbar.vue -->
 <template>
   <nav class="flex justify-between items-center w-full h-[75px] fixed left-0 top-0 px-40 bg-white z-[9999999]">
     <div class="flex gap-11">
@@ -17,10 +16,32 @@
       <a href=""><img src="../../public/img/profile.svg" alt="" /></a>
       <a class="relative" href="">
         <img src="../../public/img/cart.svg" alt="" />
-        <div class="w-4 h-[0.9rem] -right-1.5 -bottom-1.5 rounded-full bg-[#EF5820] absolute text-center text-[9px] text-white">3</div>
+        <div class="w-4 h-[0.9rem] -right-1.5 -bottom-1.5 rounded-full bg-[#EF5820] absolute text-center text-[9px] text-white">
+          {{ totalItems }}
+        </div>
       </a>
-      <a href=""><img src="../../public/img/wishlist.svg" alt="" /></a>
+      <a class="relative" href="">
+        <img src="../../public/img/wishlist.svg" alt="" />
+        <div v-if="wishlistItems > 0" class="w-4 h-[0.9rem] -right-1.5 -bottom-1.5 rounded-full bg-[#EF5820] absolute text-center text-[9px] text-white">
+          {{ wishlistItems }}
+        </div>
+      </a>
       <button @click=""><img src="../../public/img/hamburger.svg" alt="" /></button>
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  props: {
+    totalItems: {
+      type: Number,
+      required: true,
+    },
+    wishlistItems: {
+      type: Number,
+      required: true,
+    },
+  },
+};
+</script>

@@ -20,38 +20,58 @@
       :modules="modules"
       class="mySwiper2"
     >
-      <swiper-slide><img src="../../public/img/hero_1.jpeg" /></swiper-slide>
-      <swiper-slide><img src="../../public/img/hero_2.jpeg" /></swiper-slide>
-      <swiper-slide><img src="../../public/img/hero_3.jpeg" /></swiper-slide>
-      <swiper-slide><img src="../../public/img/hero_4.jpeg" /></swiper-slide>
+      <swiper-slide>
+        <img src="../../public/img/hero_1.jpeg" />
+        <button @click="showDialog = true" class="absolute right-4 rounded-full text-9xl z-[1] bg-white p-3.5 bottom-5">
+          <img src="../../public/img/full.svg" alt="" />
+        </button>
+      </swiper-slide>
+
+      <swiper-slide>
+        <img src="../../public/img/hero_2.jpeg" />
+        <button @click="showDialog = true" class="absolute right-4 rounded-full text-9xl z-[1] bg-white p-3.5 bottom-5">
+          <img src="../../public/img/full.svg" alt="" />
+        </button>
+      </swiper-slide>
+
+      <swiper-slide>
+        <img src="../../public/img/hero_3.jpeg" />
+        <button @click="showDialog = true" class="absolute right-4 rounded-full text-9xl z-[1] bg-white p-3.5 bottom-5">
+          <img src="../../public/img/full.svg" alt="" />
+        </button>
+      </swiper-slide>
+      <swiper-slide>
+        <img src="../../public/img/hero_4.jpeg" />
+        <button @click="showDialog = true" class="absolute right-4 rounded-full text-9xl z-[1] bg-white p-3.5 bottom-5">
+          <img src="../../public/img/full.svg" alt="" />
+        </button>
+      </swiper-slide>
     </swiper>
-    <button class="absolute right-4 rounded-full text-9xl z-[9999] bg-white p-3.5 bottom-5">
-      <img src="../../public/img/full.svg" alt="" />
-    </button>
+    <DialogComponent v-if="showDialog" @close="showDialog = false">
+      <img class="h-[600px]" src="../../public/img/hero_1.jpeg" alt="" />
+    </DialogComponent>
   </div>
 </template>
+
 <script>
 import { ref } from "vue";
-// Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
-
-// Import Swiper styles
 import "swiper/css";
-
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-
-// import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import DialogComponent from "./DialogImage.vue"; // Pastikan jalur ke komponen benar
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
+    DialogComponent,
   },
   setup() {
     const thumbsSwiper = ref(null);
+    const showDialog = ref(false);
 
     const setThumbsSwiper = (swiper) => {
       thumbsSwiper.value = swiper;
@@ -60,8 +80,99 @@ export default {
     return {
       thumbsSwiper,
       setThumbsSwiper,
+      showDialog,
       modules: [FreeMode, Navigation, Thumbs],
     };
   },
 };
 </script>
+
+<style scoped>
+.swiper {
+  width: 110px;
+  height: 110px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+
+.mySwiper2 {
+  height: 480px;
+  width: 480px;
+}
+
+.mySwiper {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  width: 110px !important;
+  height: 110px;
+  opacity: 0.4;
+}
+
+::v-deep .mySwiper .swiper-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper.swiper-initialized.swiper-horizontal.swiper-free-mode.swiper-watch-progress.mySwiper.swiper-backface-hidden.swiper-thumbs {
+  margin: 0;
+}
+
+.swiper.swiper-initialized.swiper-horizontal.mySwiper2.swiper-backface-hidden {
+  margin: 0;
+}
+
+::v-deep .swiper-button-next,
+::v-deep .swiper-button-prev {
+  color: black !important;
+  background-color: #fff;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  margin: 0 12px;
+}
+
+::v-deep .swiper-button-prev:after,
+::v-deep .swiper-button-next:after {
+  font-size: 13px !important;
+  font-weight: 800;
+}
+</style>
