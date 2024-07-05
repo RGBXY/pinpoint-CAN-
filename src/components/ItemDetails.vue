@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full  lg:w-[50%]">
+  <div class="w-full lg:w-[50%]">
     <p class="font-semibold mb-8">HOME / DETAIL</p>
     <h1 class="font-bold text-3xl mb-2">RED AND BLACK SWEATER</h1>
     <p class="text-slate-600 mb-2 text-sm">⭐⭐⭐⭐⭐ (5.0) 47 review</p>
