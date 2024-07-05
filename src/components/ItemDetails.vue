@@ -13,7 +13,7 @@
       </div>
       <button @click="addToCart" class="py-4 px-6 border-slate-300 bg-[#6366F1] text-white text-sm">TAMBAH KE KERANJANG</button>
       <button @click="toggleWishlist" class="inline-flex py-3.5 px-3.5 gap-5 border-2 border-slate-300 font-semibold">
-        <img src="../../public/img/wishlist_after.svg" alt="" />
+        <img src="../../public/img/wishlist.svg" alt="" />
       </button>
       <button class="inline-flex py-3.5 px-4 gap-5 border-2 border-slate-300 font-semibold">
         <img src="../../public/img/share.svg" alt="" />
