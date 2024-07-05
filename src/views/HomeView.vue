@@ -1,8 +1,7 @@
 <template>
   <main>
-   
-    <Description/>
-    <RelatedCard/>
+    <Description />
+    <RelatedCard />
   </main>
 </template>
 
@@ -11,7 +10,6 @@ import SliderVue from "@/components/Slider.vue";
 import ItemDetails from "@/components/ItemDetails.vue";
 import Description from "@/components/Description.vue";
 import RelatedCard from "@/components/RelatedCard.vue";
-import ZoomImage from "@/components/ZoomImage.vue";
 
 export default {
   components: {
@@ -19,7 +17,6 @@ export default {
     ItemDetails,
     Description,
     RelatedCard,
-    ZoomImage
-},
+  },
 };
 </script>

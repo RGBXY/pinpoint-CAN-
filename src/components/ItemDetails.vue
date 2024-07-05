@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[50%]">
+  <div class="w-full  lg:w-[50%]">
     <p class="font-semibold mb-8">HOME / DETAIL</p>
     <h1 class="font-bold text-3xl mb-2">RED AND BLACK SWEATER</h1>
     <p class="text-slate-600 mb-2 text-sm">⭐⭐⭐⭐⭐ (5.0) 47 review</p>
@@ -12,8 +12,8 @@
         <button @click="tambah" class="py-3 pr-3">+</button>
       </div>
       <button @click="addToCart" class="py-4 px-6 border-slate-300 bg-[#6366F1] text-white text-sm">TAMBAH KE KERANJANG</button>
-      <button @click="addToWishlist" class="inline-flex py-3.5 px-3.5 gap-5 border-2 border-slate-300 font-semibold">
-        <img src="../../public/img/wishlist.svg" alt="" />
+      <button @click="toggleWishlist" class="inline-flex py-3.5 px-3.5 gap-5 border-2 border-slate-300 font-semibold">
+        <img :src="isInWishlist ? '../../public/img/wishlist_after.svg' : '../../public/img/wishlist.svg'" alt="" />
       </button>
       <button class="inline-flex py-3.5 px-4 gap-5 border-2 border-slate-300 font-semibold">
         <img src="../../public/img/share.svg" alt="" />
@@ -36,9 +36,14 @@ export default {
       type: Number,
       default: 0,
     },
+    isInWishlist: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props, { emit }) {
     const count = ref(props.initialCount);
+    const inWishlist = ref(props.isInWishlist);
 
     const tambah = () => {
       count.value++;
@@ -55,8 +60,9 @@ export default {
       count.value = 0; // Reset count setelah menambah ke keranjang
     };
 
-    const addToWishlist = () => {
-      emit("add-to-wishlist");
+    const toggleWishlist = () => {
+      inWishlist.value = !inWishlist.value;
+      emit("toggle-wishlist", inWishlist.value);
     };
 
     return {
@@ -64,7 +70,8 @@ export default {
       tambah,
       kurang,
       addToCart,
-      addToWishlist,
+      toggleWishlist,
+      isInWishlist: inWishlist,
     };
   },
 };

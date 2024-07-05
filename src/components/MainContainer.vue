@@ -1,12 +1,10 @@
 <!-- MainContainer.vue -->
 <template>
-  <div>
-    <div class="h-full pt-24 pb-20 flex justify-between items-center gap-7">
-      <Slider />
-      <ItemDetails @add-to-cart="handleAddToCart" @add-to-wishlist="handleAddToWishlist" />
-    </div>
-    <Navbar :totalItems="totalItems" :wishlistItems="wishlistItems" />
+  <div class="h-full pt-24 pb-20 flex flex-col lg:flex-row justify-between items-center gap-7">
+    <Slider />
+    <ItemDetails @add-to-cart="handleAddToCart" @toggle-wishlist="handleToggleWishlist" :isInWishlist="isInWishlist" />
   </div>
+  <Navbar :totalItems="totalItems" :wishlistItems="wishlistItems" />
 </template>
 
 <script>
@@ -24,20 +22,27 @@ export default {
   setup() {
     const totalItems = ref(0);
     const wishlistItems = ref(0);
+    const isInWishlist = ref(false);
 
     const handleAddToCart = (count) => {
       totalItems.value += count;
     };
 
-    const handleAddToWishlist = () => {
-      wishlistItems.value++;
+    const handleToggleWishlist = (isInWishlistStatus) => {
+      isInWishlist.value = isInWishlistStatus;
+      if (isInWishlistStatus) {
+        wishlistItems.value++;
+      } else {
+        wishlistItems.value--;
+      }
     };
 
     return {
       totalItems,
       wishlistItems,
       handleAddToCart,
-      handleAddToWishlist,
+      handleToggleWishlist,
+      isInWishlist,
     };
   },
 };

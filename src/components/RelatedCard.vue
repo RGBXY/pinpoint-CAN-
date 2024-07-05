@@ -2,7 +2,7 @@
   <div class="pb-20 pt-5 relative h-screen">
     <h1 class="text-3xl mb-8">RELATED <span class="font-semibold">PRODUCT</span></h1>
     <swiper :navigation="true" :slidesPerView="4" :spaceBetween="30" :modules="modules" class="mySwiper3">
-      <swiper-slide v-for="product in relatedProduct" :key="product.id">
+      <swiper-slide v-for="product in productStore.product" :key="product.id">
         <img class="w-full h-[370px] object-cover" :src="product.img" alt="" />
         <div class="flex items-center justify-between mt-4 mb-1.5">
           <p class="text-sm text-slate-700">{{ product.gender }}</p>
@@ -22,6 +22,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { useProductStore } from "@/stores/relatedProduct";
 
 export default {
   components: {
@@ -29,51 +30,10 @@ export default {
     SwiperSlide,
   },
   setup() {
-    const relatedProduct = ref([
-      {
-        id: "1",
-        img: new URL("../../public/img/related_1.jpeg", import.meta.url).href,
-        gender: "WOMEN",
-        title: "Product 1",
-        price: "Rp400.000",
-        review: "⭐⭐⭐⭐⭐ (4.5) 16 Reviews",
-      },
-      {
-        id: "2",
-        img: new URL("../../public/img/related_2.jpeg", import.meta.url).href,
-        gender: "WOMEN",
-        title: "Product 2",
-        price: "Rp400.000",
-        review: "⭐⭐⭐⭐⭐ (4.5) 16 Reviews",
-      },
-      {
-        id: "3",
-        img: new URL("../../public/img/related_3.jpeg", import.meta.url).href,
-        gender: "WOMEN",
-        title: "Product 3",
-        price: "Rp400.000",
-        review: "⭐⭐⭐⭐⭐ (4.5) 16 Reviews",
-      },
-      {
-        id: "4",
-        img: new URL("../../public/img/related_4.jpeg", import.meta.url).href,
-        gender: "WOMEN",
-        title: "Product 4",
-        price: "Rp400.000",
-        review: "⭐⭐⭐⭐⭐ (4.5) 16 Reviews",
-      },
-      {
-        id: "5",
-        img: new URL("../../public/img/related_4.jpeg", import.meta.url).href,
-        gender: "WOMEN",
-        title: "Product 5",
-        price: "Rp400.000",
-        review: "⭐⭐⭐⭐⭐ (4.5) 16 Reviews",
-      },
-    ]);
+    const productStore = useProductStore();
 
     return {
-      relatedProduct,
+      productStore,
       modules: [Navigation],
     };
   },

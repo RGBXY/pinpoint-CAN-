@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-5 relative">
+  <div class="flex flex-col-reverse justify-center md:flex-row items-center gap-5 relative">
     <!-- Thumbnail Slider -->
     <swiper @swiper="setThumbsSwiper" :spaceBetween="10" :slidesPerView="4" :freeMode="true" :watchSlidesProgress="true" :modules="modules" class="mySwiper">
       <swiper-slide><img src="../../public/img/hero_1.jpeg" /></swiper-slide>
@@ -18,7 +18,7 @@
       :navigation="true"
       :thumbs="{ swiper: thumbsSwiper }"
       :modules="modules"
-      class="mySwiper2"
+      class="mySwiper2 px-20"
     >
       <swiper-slide>
         <img src="../../public/img/hero_1.jpeg" />
@@ -48,7 +48,9 @@
       </swiper-slide>
     </swiper>
     <DialogComponent v-if="showDialog" @close="showDialog = false">
-      <img class="h-[600px]" src="../../public/img/hero_1.jpeg" alt="" />
+      <div class="rounded-lg overflow-hidden relative">
+        <img class="h-[600px] hover:cursor-zoom-in hover:scale-150" src="../../public/img/hero_1.jpeg" alt="" />
+      </div>
     </DialogComponent>
   </div>
 </template>
@@ -89,7 +91,6 @@ export default {
 
 <style scoped>
 .swiper {
-  width: 110px;
   height: 110px;
 }
 
@@ -152,7 +153,7 @@ export default {
   object-fit: cover;
 }
 
-.swiper.swiper-initialized.swiper-horizontal.swiper-free-mode.swiper-watch-progress.mySwiper.swiper-backface-hidden.swiper-thumbs {
+.swiper.swiper-initialized .swiper-horizontal .swiper-free-mode .swiper-watch-progress .mySwiper .swiper-backface-hidden .swiper-thumbs {
   margin: 0;
 }
 
@@ -174,5 +175,28 @@ export default {
 ::v-deep .swiper-button-next:after {
   font-size: 13px !important;
   font-weight: 800;
+}
+
+@media (max-width: 720px) {
+  .mySwiper2 {
+    height: 380px;
+    width: 380px;
+  }
+
+  ::v-deep .mySwiper .swiper-wrapper {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .mySwiper .swiper {
+    width: 100%;
+    height: 110px;
+  }
+
+  .mySwiper .swiper-slide {
+    width: 80px !important;
+    height: 70px;
+    margin: 0 !important;
+  }
 }
 </style>
