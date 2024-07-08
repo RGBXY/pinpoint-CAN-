@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { useUIStore } from '@/stores/cartSide';
-import { computed } from 'vue';
+import { useUIStore } from "@/stores/cartSide";
+import { computed } from "vue";
 
 export default {
   setup() {
@@ -19,7 +19,7 @@ export default {
     };
 
     const isSidebarOpen = computed(() => uiStore.isSidebarOpen);
-    
+
     return {
       isSidebarOpen,
       toggleSidebar,

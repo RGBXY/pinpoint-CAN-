@@ -3,7 +3,12 @@
   <nav class="flex justify-between items-center w-full h-[75px] fixed left-0 top-0 px-8 lg:px-24 bg-white z-[9999999]">
     <div class="flex gap-11">
       <img class="lg:w-28 w-20" src="../../public/img/Logo.svg" alt="" />
-      <div class="lg:flex hidden items-center gap-7 font-semibold text-[0.9rem]">
+      <div
+        :class="[
+          'flex lg:flex flex-col text-white lg:text-black pt-10 lg:pt-0 lg:flex-row fixed lg:static w-[300px] lg:w-full h-screen lg:h-full top-0 left-0 bottom-0 bg-[#6366F1] lg:bg-transparent items-center gap-7 font-semibold text-[0.9rem] transition-transform transform lg:translate-x-0',
+          { '-translate-x-full': !resNav },
+        ]"
+      >
         <a href="">HOME</a>
         <a href="">SHOP</a>
         <a href="">BLOG</a>
@@ -27,23 +32,33 @@
           {{ wishlistItems }}
         </div>
       </a>
-      <button><img src="../../public/img/hamburger.svg" alt="" /></button>
+      <button @click="toggleResNav"><img src="../../public/img/hamburger.svg" alt="" /></button>
     </div>
   </nav>
 </template>
 
 <script>
 import { useUIStore } from "@/stores/cartSide";
+import { computed } from "vue";
 
 export default {
   setup() {
     const uiStore = useUIStore();
+
     const toggleSidebar = () => {
       uiStore.toggleSidebar();
     };
 
+    const toggleResNav = () => {
+      uiStore.toggleResNav();
+    };
+
+    const resNav = computed(() => uiStore.resNav);
+
     return {
       toggleSidebar,
+      toggleResNav,
+      resNav,
     };
   },
   props: {
