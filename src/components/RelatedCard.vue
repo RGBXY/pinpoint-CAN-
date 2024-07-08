@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-20 pt-5 relative h-screen">
+  <div class="pb-20 pt-5 relative lg:h-screen">
     <h1 class="text-3xl mb-8">RELATED <span class="font-semibold">PRODUCT</span></h1>
     <swiper :navigation="true" :slidesPerView="auto" :spaceBetween="30" :modules="modules" :breakpoints="breakpoints" class="mySwiper3">
       <swiper-slide v-for="product in productStore.product" :key="product.id">
